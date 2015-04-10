@@ -31,7 +31,7 @@ var server = http.createServer(function(request, response){
   response.end();
 });
 
-server.listen(8001);
+server.listen(process.env.PORT || 8001);
 var listener = io.listen(server);
 
 listener.sockets.on('connection', function(socket){
