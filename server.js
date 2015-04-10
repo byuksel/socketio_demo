@@ -25,9 +25,7 @@ var mypage = '<html>                                       \
   </body>                                                  \
 </html>'
 
-
 var server = http.createServer(function(request, response){
-  console.log('Connection');
   response.writeHead(200, {'Content-Type': 'text/html'});
   response.write(mypage);
   response.end();
@@ -41,10 +39,6 @@ listener.sockets.on('connection', function(socket){
   socket.on('client_data', function (data) {
     listener.sockets.emit('message', data);
   });
-
-  setInterval(function(){
-    socket.emit('date', {'date': new Date()});
-  }, 1000);
 });
 
 
