@@ -39,6 +39,7 @@ var listener = io.listen(server);
 listener.sockets.on('connection', function(socket){
   // Broadcast a user's message to everyone else in the room
   socket.on('client_data', function (data) {
+    var data = data.replace(/\</,'&lt;').replace(/\>/,'&gt;');
     listener.sockets.emit('message', data);
   });
 
